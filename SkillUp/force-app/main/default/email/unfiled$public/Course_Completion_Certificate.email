@@ -1,0 +1,11 @@
+<messaging:emailTemplate subject="Course Completed" recipientType="Contact" relatedToType="Trainee__c">
+    
+    <messaging:htmlEmailBody >
+    <html>
+        Please find your certificate attached.
+    </html>
+    </messaging:htmlEmailBody>
+    <messaging:attachment renderAs="PDF" filename="Certificate.pdf">
+        <c:Certificatecomp recordId="{!relatedTo.Id}"/>
+    </messaging:attachment>
+</messaging:emailTemplate>

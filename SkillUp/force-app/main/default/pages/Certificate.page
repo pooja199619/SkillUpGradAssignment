@@ -1,0 +1,7 @@
+<!-- Here we call the Certificate component on the basis of the value of course status on trainee object -->
+<apex:page standardController="Trainee__c" renderAs="pdf" contentType="application/Certificate.pdf">
+ 
+    <c:Certificatecomp recordId="{!Trainee__c.Id}" rendered="{!if(Trainee__c.Course_Status__c=='Completed',true,false)}"/>
+    
+    <c:CertificateErrorComp rendered="{!if(Trainee__c.Course_Status__c!='Completed',true,false)}"/>
+</apex:page>

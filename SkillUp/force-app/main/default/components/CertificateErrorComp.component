@@ -1,0 +1,19 @@
+<apex:component controller="certificateerorController">
+     <apex:stylesheet value="{!$Resource.pdfStyle}"/>
+    <div style="border: 3px solid #000000; padding: 3px; height:690px;">
+        <div style="border: 3px solid #000000; height:684px;">
+	<center>
+        <apex:image url="{!$Resource.error}" width="150" height="100" style="margin-top:80px;"/>
+		<h1 style="text-decoration:underline;">Certificate For Training Completion</h1>
+	</center>
+            <div style="margin-left:220px; margin-top:80px;" >
+                <p>Oops!</p>
+                <p>Hey traineelist.Name,</p>
+				<p>Seems like your {!courselist.Name} course has not been completed yet.</p>
+				<p>Please come back once your training is completed.</p>
+               
+            </div>
+            
+        </div>
+    </div>
+</apex:component>

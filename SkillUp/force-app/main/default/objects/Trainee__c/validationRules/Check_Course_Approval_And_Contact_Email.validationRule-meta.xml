@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_Course_Approval_And_Contact_Email</fullName>
+    <active>true</active>
+    <description>This validation rule will get triggered while saving Trainee&#39;s detail if email id of the related contact is blank and the course is not approved either by System Admin or Trainer.</description>
+    <errorConditionFormula>AND(  NOT( $Setup.Process_Deactivation__c.Disable_Validation_Rule__c ),
+
+OR(
+NOT(ISPICKVAL(  Course__r.Is_Approved__c, &#39;Approved&#39; ) ),
+ISBLANK( Contact__r.Email ) 
+)
+
+)</errorConditionFormula>
+    <errorMessage>Either Contact Email is blank or Course is not Approved.</errorMessage>
+</ValidationRule>

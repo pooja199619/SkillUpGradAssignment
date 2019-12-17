@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>When a trainee is enrolled with any course then this email will  be sent as a confirmation for same</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Course Enrollment Update</name>
+    <style>none</style>
+    <subject>Course Enrollment Confirmation</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

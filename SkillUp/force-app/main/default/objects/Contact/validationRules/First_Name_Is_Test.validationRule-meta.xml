@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>First_Name_Is_Test</fullName>
+    <active>true</active>
+    <errorConditionFormula>$Setup.Switch__c.Test_Switch__c = true &amp;&amp; FirstName  = &#39;Test&#39;</errorConditionFormula>
+    <errorMessage>Contact with First Name &#39;Test&#39; cannot be created</errorMessage>
+</ValidationRule>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Course_Enrollment_Acknowledgement_Mail_To_Related_Contact</fullName>
+        <description>Course Enrollment Acknowledgement Mail To Related Contact</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Contact__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Course_Enrollment_Update</template>
+    </alerts>
+    <alerts>
+        <fullName>Course_Enrollment_Confirmation_Mail_To_Related_Con</fullName>
+        <description>Course Enrollment Confirmation Mail To Related Con</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Contact__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Course_Enrollment_Update</template>
+    </alerts>
+    <alerts>
+        <fullName>Course_Enrollment_Confirmation_Mail_To_Related_Contact</fullName>
+        <description>Course Enrollment Confirmation Mail To Related Contact</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Contact__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Course_Enrollment_Update</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Certificate_To_Trainee_When_Training_Is_Complete</fullName>
+        <description>Send Certificate To Trainee When Training Is Complete</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Contact__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Send_Certificate</template>
+    </alerts>
+    <alerts>
+        <fullName>Send_Certificate_To_Trainee_When_Training_Is_Completed</fullName>
+        <description>Send Certificate To Trainee When Training Is Completed</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>poojac@makepositive.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Course_Completion_Certificate</template>
+    </alerts>
+    <rules>
+        <fullName>Send Certificate Email</fullName>
+        <actions>
+            <name>Send_Certificate_To_Trainee_When_Training_Is_Complete</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>AND( 
+NOT( $Setup.Process_Deactivation__c.Disable_Workflow_Rules__c),
+NOT(ISPICKVAL( Course__r.Is_Approved__c, &#39;Approved&#39; ) )
+)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Send Course Enrollment Confirmation</fullName>
+        <actions>
+            <name>Course_Enrollment_Confirmation_Mail_To_Related_Con</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <formula>AND(
+NOT( $Setup.Process_Deactivation__c.Disable_Workflow_Rules__c),
+ NOT(ISPICKVAL(Course_Status__c  , &#39;Completed&#39;)) 
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IfOwnershipIsPublicFillAnnualRevenue</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( ISPICKVAL( Ownership , &#39;Public&#39;) ,  ISNULL( AnnualRevenue) , false)</errorConditionFormula>
+    <errorDisplayField>AnnualRevenue</errorDisplayField>
+    <errorMessage>Please fill the Annual Revenue as Ownership of this Account is public.</errorMessage>
+</ValidationRule>
