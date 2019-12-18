@@ -1,6 +1,6 @@
 trigger CourseTrigger on Course__c (after update) {
     
-    if(!Process_Deactivation__c.getInstance().Disable_Trigger__c) {
+    if(Process_Deactivation__c.getInstance().Disable_Trigger__c) {
          System.debug('Bypassing trigger due to custom setting');
          return;
      }

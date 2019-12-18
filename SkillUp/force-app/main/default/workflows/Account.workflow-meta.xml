@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Account_Contact_Level_Field_Update</fullName>
+        <field>Contact_Level__c</field>
+        <literalValue>Secondary</literalValue>
+        <name>Account Contact Level Field Update</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Account_Relationship_Value</fullName>
+        <field>Account_s_Relationship_value__c</field>
+        <formula>IF
+(
+ISBLANK(Account_s_Relationship_value__c ),  
+Last_Month_Dues__c  +  0,
+Last_Month_Dues__c  +  Account_s_Relationship_value__c
+)</formula>
+        <name>Update Account Relationship Value</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>Update Account Relationship Value Field</fullName>
+        <actions>
+            <name>Update_Account_Relationship_Value</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Last_Month_Dues__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>0</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>UpdateAccountLevelFieldBasedOnContactLevelField</fullName>
+        <actions>
+            <name>Account_Contact_Level_Field_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Account.Name</field>
+            <operation>equals</operation>
+            <value>Contact: Account Name</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

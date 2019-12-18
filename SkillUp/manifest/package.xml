@@ -78,6 +78,7 @@
         <name>ValidationRule</name>
     </types>
     <types>
+        <members>Account</members>
         <members>Course__c</members>
         <members>Trainee__c</members>
         <name>Workflow</name>
@@ -96,11 +97,13 @@
         <members>Course__c.Is_Approved_To_Pending</members>
         <members>Course__c.Is_Approved_To_Rejected</members>
         <members>Course__c.Under_Approval</members>
+        <members>Account.Update_Account_Relationship_Value</members>
         <name>WorkflowFieldUpdate</name>
     </types>
     <types>
         <members>Trainee__c.Send Certificate Email</members>
         <members>Trainee__c.Send Course Enrollment Confirmation</members>
+        <members>Account.Update Account Relationship Value Field</members>
         <name>WorkflowRule</name>
     </types>
     <types>
